@@ -1,0 +1,352 @@
+$vw-desktop: 1440;
+$vw-mobile: 375;
+@function getScalingFactor($desktopFont, $mobileFont) {
+  @return ($desktopFont - $mobileFont) / ($vw-desktop - $vw-mobile);
+}
+@mixin font-base {
+  --font-weight: 260;
+  --font-width: 80;
+  --font-ctgr: 100;
+  --line-height: 1;
+  --letter-spacing: 0;
+  --font-size-fallback: 1rem;
+
+  line-height: var(--line-height);
+  letter-spacing: var(--letter-spacing);
+  font-size: var(--font-size-fallback);
+}
+@mixin noto-base {
+  @include font-base;
+
+  font-family: var(--font-noto-serif);
+  text-transform: uppercase;
+  font-variation-settings: "CTGR" var(--font-ctgr), "wght" var(--font-weight),
+    "wdth" var(--font-width);
+
+  --font-size-min: 4rem;
+  --font-size-max: 11.25rem;
+
+  --font-size-fallback: var(--font-size-min);
+
+  @include large {
+    --font-weight: 180;
+    --letter-spacing: 0;
+    --line-height: 1;
+
+    --font-size-fallback: var(--font-size-max);
+  }
+}
+
+@mixin inter-base {
+  @include font-base;
+
+  font-family: var(--font-inter);
+  font-weight: var(--font-weight);
+  --font-weight: 300;
+  --line-height: 1.4;
+  --letter-spacing: 0.006em;
+}
+
+@mixin bold {
+  font-weight: 500;
+}
+
+@mixin condensed {
+  --font-width: 63;
+}
+
+@mixin extended {
+  --font-width: 100;
+}
+
+@mixin h1 {
+  @include noto-base;
+
+  // 64px
+  --font-size-min: 4rem;
+
+  // 90px
+  --font-size-max: 5.625rem;
+
+  font-size: calc(var(--font-size-max) + (100vw - $vw-desktop * 1px) * getScalingFactor(90, 64));
+
+  --font-weight: 240;
+
+  @include large {
+    --font-weight: 220;
+  }
+}
+
+@mixin h2 {
+  @include noto-base;
+
+  // 56px
+  --font-size-min: 3.5rem;
+  // 80px
+  --font-size-max: 5rem;
+
+  --font-ctgr: 80;
+  --line-height: 1.1;
+  --letter-spacing: 0.006em;
+
+  font-size: calc(var(--font-size-max) + (100vw - 1440px) * getScalingFactor(80, 56));
+
+  // change from 1.1 to 1
+  line-height: clamp(3.85rem, 2.667vw + 3.225rem, var(--font-size-max));
+
+  letter-spacing: clamp(0em, 0.0182em + -0.0227vw, 0.006em);
+
+  @include xxlarge {
+    line-height: 1;
+  }
+}
+
+@mixin h3 {
+  @include noto-base;
+
+  // 48px
+  --font-size-min: 3rem;
+  // 72px
+  --font-size-max: 4.5rem;
+
+  --font-ctgr: 80;
+  --line-height: 1.15;
+  --letter-spacing: 0.006em;
+
+  font-size: calc(var(--font-size-max) + (100vw - 1440px) * getScalingFactor(72, 48));
+
+  // change from 1.15 to 1
+  line-height: clamp(3.45rem, 1.577vw + 3.08rem, var(--font-size-max));
+  letter-spacing: clamp(0em, 0.0182em + -0.0227vw, 0.006em);
+
+  @include xxlarge {
+    line-height: 1;
+  }
+}
+
+@mixin h3-condensed {
+  @include h3;
+  @include condensed;
+}
+
+@mixin h3-extended {
+  @include h3;
+  @include extended;
+}
+
+@mixin h4 {
+  @include noto-base;
+
+  // 32px
+  --font-size-min: 2rem;
+  // 44px
+  --font-size-max: 2.75rem;
+
+  --font-weight: 250;
+  --font-ctgr: 80;
+  --line-height: 1.15;
+  --letter-spacing: 0.006em;
+
+  font-size: calc(var(--font-size-max) + (100vw - 1440px) * getScalingFactor(44, 32));
+  line-height: clamp(2.3rem, 0.676vw + 2.142rem, var(--font-size-max));
+  letter-spacing: clamp(0em, 0.0182em + -0.0227vw, 0.006em);
+
+  @include large {
+    --font-weight: 200;
+  }
+
+  @include xxlarge {
+    line-height: 1;
+  }
+}
+
+@mixin h4-extended {
+  @include h4;
+  @include extended;
+}
+
+@mixin h4-condensed {
+  @include h4;
+  @include condensed;
+}
+
+@mixin h4-alt {
+  @include inter-base;
+
+  // 32px
+  --font-size-min: 2rem;
+  // 44px
+  --font-size-max: 2.75rem;
+  --font-weight: 240;
+  --line-height: 1.2;
+
+  font-size: calc(var(--font-size-max) + (100vw - 1440px) * getScalingFactor(44, 32));
+  line-height: clamp(2.4rem, 0.939vw + 2.18rem, 3.025rem);
+  letter-spacing: clamp(0em, 0.0182em + -0.0227vw, 0.006em);
+
+  @include large {
+    --letter-spacing: 0;
+  }
+
+  @include xxlarge {
+    line-height: 1.1;
+  }
+}
+
+@mixin h5 {
+  @include noto-base;
+
+  // 24px
+  --font-size-min: 1.5rem;
+  // 28px
+  --font-size-max: 1.75rem;
+
+  --font-weight: 250;
+  --line-height: 1.3;
+
+  font-size: calc(var(--font-size-max) + (100vw - 1440px) * getScalingFactor(32, 24));
+  line-height: clamp(1.925rem, -0.038vw + 1.959rem, 1.95rem);
+  letter-spacing: clamp(0.006em, 0.0182em + -0.0227vw, 0.005em);
+
+  @include large {
+    --line-height: 1.1;
+    --letter-spacing: 0.005em;
+  }
+
+  @include xxlarge {
+    line-height: 1.1;
+  }
+}
+
+@mixin h5-alt {
+  @include inter-base;
+
+  // 24px
+  --font-size-min: 1.5rem;
+  // 28px
+  --font-size-max: 1.75rem;
+
+  --line-height: 1.3;
+
+  font-size: calc(var(--font-size-max) + (100vw - 1440px) * getScalingFactor(32, 24));
+  line-height: clamp(1.95rem, 0.225vw + 1.897rem, 2.1rem);
+  letter-spacing: clamp(0em, 0.0182em + -0.0227vw, 0.006em);
+
+  @include large {
+    font-weight: 300;
+
+    --line-height: 1.2;
+    --letter-spacing: 0;
+  }
+
+  @include xxlarge {
+    line-height: 1.2;
+  }
+}
+
+@mixin headline {
+  @include inter-base;
+
+  // fixed 20px both desktop and mobile
+  font-size: toRem(20);
+
+  letter-spacing: clamp(0em, 0.0182em + -0.0227vw, 0.006em);
+
+  @include large {
+    --letter-spacing: 0;
+  }
+
+  @include xxlarge {
+    // grows with the viewport starting from 20px at 1440
+    font-size: calc(1.25rem + (100vw - 1440px) * getScalingFactor(32, 24));
+  }
+}
+
+@mixin headline-heavy {
+  @include headline;
+  @include bold;
+}
+
+@mixin body {
+  @include inter-base;
+
+  font-size: toRem(16);
+
+  --line-height: 1.5;
+  --letter-spacing: 0.008em;
+  --font-weigth: 350;
+
+  letter-spacing: clamp(0em, 0.0182em + -0.0227vw, 0.008em);
+  @include large {
+    --letter-spacing: 0;
+  }
+
+  @include xxlarge {
+    // grows with the viewport starting from 16px at 1440
+    font-size: calc(1rem + (100vw - 1440px) * getScalingFactor(32, 24));
+  }
+}
+
+@mixin body-heavy {
+  @include body;
+  @include bold;
+}
+
+@mixin body-heavy-underlined {
+  @include body-heavy;
+  text-decoration: underline;
+}
+
+@mixin subhead {
+  @include inter-base;
+
+  font-size: toRem(14);
+  --font-weigth: 400;
+  --line-height: 1.5;
+  --letter-spacing: 0.008em;
+
+  line-height: clamp(1.225rem, -0.131vw + 1.343rem, 1.313rem);
+  letter-spacing: clamp(0em, 0.0182rem + -0.0227vw, 0.008em);
+
+  @include large {
+    --letter-spacing: 0;
+    --line-height: 1.4;
+  }
+
+  @include xxlarge {
+    // grows with the viewport starting from 14px at 1440
+    font-size: calc(0.875rem + (100vw - 1440px) * getScalingFactor(32, 24));
+    line-height: 1.4;
+  }
+}
+
+@mixin subhead-caps {
+  @include subhead;
+  text-transform: uppercase;
+}
+
+@mixin subhead-heavy {
+  @include subhead;
+  @include bold;
+}
+
+@mixin callout {
+  @include inter-base;
+
+  font-size: toRem(16);
+  line-height: clamp(1.4rem, 0.15vw + 1.365rem, 1.5rem);
+  letter-spacing: clamp(0em, 0.0182em + -0.0227vw, 0.01em);
+  --letter-spacing: 0.01em;
+  --font-weight: 350;
+
+  @include large {
+    --line-height: 1.5;
+    --letter-spacing: 0;
+  }
+
+  @include xxlarge {
+    // grows with the viewport starting from 16px at 1440
+    font-size: calc(1rem + (100vw - 1440px) * getScalingFactor(32, 24));
+    line-height: 1.5;
+  }
+}

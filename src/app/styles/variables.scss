@@ -1,0 +1,62 @@
+:root {
+  // spacings
+  --s-xxs: 0.5rem; // 8px //16px
+  --s-xs: 1rem; // 16px
+  --s-s: 1.5rem; // 24px
+  --s-m: 2rem; // 32px
+  --s-l: 3rem; // 48px
+  --s-xl: 4rem; // 64px
+  --s-xxl: 6rem; // 96px
+  --s-xxxl: 8rem; // 128px
+  // colors
+  --c-white: #{$white};
+  --c-charming-white: #{$charming-white};
+  --c-black: #{$black};
+  --c-black-velvet: #{$black-velvet};
+  --c-grey: #{$grey};
+  --c-grey-50: #{$grey-50};
+  --c-grey-80: #{$grey-80};
+  --c-grey-90: #{$grey-90};
+  --c-cool-grey-1-c: #{$cool-grey-1-c};
+  --c-ruby-glow: #{$ruby-glow};
+  --c-origin: #{$origin};
+  --c-wallnut: #{$wallnut};
+  --c-wenge: #{$wenge};
+  --c-graphite: #{$graphite};
+  --c-red-violin: #{$red-violin};
+  // themes
+  [data-palette="white"] {
+    --c-bg: #{$charming-white};
+    --c-ui1: #{$black-velvet};
+    --c-ui2: #{$cool-grey-1-c};
+    --c-accent: #{$ruby-glow};
+    --c-darker: #{$grey};
+    --c-bg-card: #{$white};
+    --c-bg-contrast: #{$black-velvet};
+    --c-bg-contrast2: #{$white};
+    --c-ui-contrast: #{$charming-white};
+    --c-icon-card: #{$ruby-glow};
+    --c-a11y: #{$red-violin};
+  }
+  [data-palette="black"] {
+    --c-bg: #{$black-velvet};
+    --c-ui1: #{$charming-white};
+    --c-ui2: #{$grey};
+    --c-accent: #{$ruby-glow};
+    --c-darker: #{$cool-grey-1-c};
+    --c-bg-card: #{$grey-dark};
+    --c-bg-contrast: #{$charming-white};
+    --c-ui-contrast: #{$black-velvet};
+    --c-bg-contrast2: #{$white};
+    --c-a11y: #{$red-violin};
+  }
+
+  // vh
+  --vh: 1vh;
+  --header-height: 6.5625rem;
+  --stickyheader-height: 5.25rem;
+  --default-inline-padding: space(16, 48);
+  @include medium_small {
+    --header-height: 5.5rem;
+  }
+}

@@ -1,0 +1,13 @@
+@function space($sizeMobile, $sizeDesktop: null) {
+  @return calc($sizeDesktop * 1px + (100vw - 1440px) * getScalingFactor($sizeDesktop, $sizeMobile));
+}
+
+@function toRem($value) {
+  $remValue: ($value / 16) + rem;
+  @return $remValue;
+}
+
+@function toEm($value) {
+  $remValue: ($value / 16) + em;
+  @return $remValue;
+}

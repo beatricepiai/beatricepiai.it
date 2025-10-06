@@ -1,0 +1,26 @@
+// use:
+// @include default-size;
+@mixin default-size {
+  // padding: 0 var(--s-xs) var(--s-s);
+  padding:  0 space(16, 48) space(24, 32);
+
+  // @include medium {
+  //   // padding: 0 var(--s-l) var(--s-m);
+  // }
+}
+
+// use:
+// @include auto-grid(300px);
+@mixin auto-grid($min-width) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min($min-width, 100%), 1fr));
+  grid-auto-rows: max-content;
+}
+
+// use:
+// @include grid(3);
+@mixin grid($column-count) {
+  display: grid;
+  grid-template-columns: repeat($column-count, 1fr);
+  grid-auto-rows: max-content;
+}

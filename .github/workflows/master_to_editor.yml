@@ -1,0 +1,27 @@
+name: automerge master to editor
+on:
+  push:
+    branches: [master]
+
+permissions:
+  contents: write
+
+jobs:
+  merge-master-to-editor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set Git config
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "Github Actions"
+
+      - name: Merge master to editor
+        run: |
+          git fetch --unshallow
+          git checkout editor
+          git pull
+          git merge --no-ff master -m "Auto-merge master to editor"
+          git push

@@ -1,0 +1,36 @@
+{
+  "name": "sb_accelerator",
+  "version": "0.2.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --experimental-https",
+    "build": "bun replace-revalidate.ts && next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@next/third-parties": "^14.2.33",
+    "@storyblok/js": "^3.5.0",
+    "dotenv": "^16.6.1",
+    "next": "^14.2.33",
+    "next-sitemap": "^4.2.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "server-only": "^0.0.1",
+    "storyblok-js-client": "^6.11.0",
+    "storyblok-rich-text-react-renderer": "^2.9.2",
+    "zustand": "^5.0.8"
+  },
+  "devDependencies": {
+    "storyblok": "^3.36.1",
+    "@next/bundle-analyzer": "^13.5.11",
+    "@types/node": "18.15.13",
+    "@types/react": "18.0.37",
+    "@types/react-dom": "18.0.11",
+    "classnames": "^2.5.1",
+    "eslint": "8.38.0",
+    "eslint-config-next": "^14.2.33",
+    "sass": "^1.93.2",
+    "typescript": "5.0.4"
+  }
+}

@@ -1,0 +1,34 @@
+// your scss code
+
+.h2 {
+    box-sizing: border-box;
+    color: rgb(17, 17, 17);
+    font-family: Roboto, sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 40px;
+    margin-bottom: 80px;
+    overflow-wrap: break-word;
+}
+
+.p {
+    align-self: flex-start;
+    box-sizing: border-box;
+    color: rgb(17, 17, 17);
+    display: table;
+    font-family: "Open Sans", sans-serif;
+    font-size: 20px;
+    line-height: 32px;
+    margin-top: 20px;
+    overflow-wrap: break-word;
+}
+
+.p p {
+    margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .textblock img {
+    height: 100%;
+  }
+}
